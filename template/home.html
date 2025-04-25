@@ -1,0 +1,92 @@
+<!-- {% load static %} -->
+<!-- {% block title %}Home{% endblock title %} -->
+
+<section id="hero" class="slider relative">
+    <div class="slides">
+        <div class="slide-content bg-gradient-custom relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative z-10 p-10 rounded max-w-4xl mx-auto">
+                <div class="animate-fade-in-up">
+                    <h2 class="text-7xl font-bold text-white mb-6 leading-tight">Peaceful Williams</h2>
+                    <p class="text-3xl text-white mb-8">I'm a <span class="font-semibold text-teal-300">Tech Tutor</span> | <span class="font-semibold text-teal-300">Django Developer</span> | <span class="font-semibold text-teal-300">Web Developer</span></p>
+                    <div class="flex gap-6 justify-center">
+                        <a href="#portfolio" class="group bg-white text-teal-500 px-8 py-4 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300 flex items-center gap-2">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#contact" class="group border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-500 transition-all duration-300 flex items-center gap-2">
+                            <span>Contact Me</span>
+                            <i class="fas fa-envelope transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-content relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <img src="{% static 'image/divinetechygirl.jpg' %}" alt="Programming 1" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white p-8">
+                    <h3 class="text-4xl font-bold mb-4">Innovative Solutions</h3>
+                    <p class="text-xl">Creating cutting-edge web applications</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-content relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <img src="{% static 'image/contact-img.jpg' %}" alt="Programming 2" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white p-8">
+                    <h3 class="text-4xl font-bold mb-4">Expert Development</h3>
+                    <p class="text-xl">Building scalable web solutions</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-content relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <img src="{% static 'image/programmer.jpg' %}" alt="Programming 3" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white p-8">
+                    <h3 class="text-4xl font-bold mb-4">Tech Education</h3>
+                    <p class="text-xl">Empowering the next generation of developers</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-content relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <img src="{% static 'image/thisisengineering.jpg' %}" alt="Programming 4" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white p-8">
+                    <h3 class="text-4xl font-bold mb-4">Modern Design</h3>
+                    <p class="text-xl">Creating beautiful user experiences</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-content relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <img src="{% static 'image/vladbagacian.jpg' %}" alt="Programming 5" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white p-8">
+                    <h3 class="text-4xl font-bold mb-4">Problem Solving</h3>
+                    <p class="text-xl">Turning ideas into reality</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+        <button title="Go to slide 1" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
+        <button title="Go to slide 2" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
+        <button title="Go to slide 3" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
+        <button title="Go to slide 4" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
+        <button title="Go to slide 5" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
+    </div>
+    <div class="absolute top-1/2 right-8 transform -translate-y-1/2 flex flex-col gap-4">
+        <button title="Next slide" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-white hover:bg-opacity-40 transition-all duration-300">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <button title="Previous slide" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-white hover:bg-opacity-40 transition-all duration-300">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+</section>
+

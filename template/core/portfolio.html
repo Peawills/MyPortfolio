@@ -1,0 +1,51 @@
+{% load static%}
+<section id="portfolio" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16 text-gradient-custom">My Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 shadow-lg rounded-xl hover-grow group">
+                <div class="relative overflow-hidden rounded-lg mb-4">
+                    <img src="{% static '/portfolio/' %}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Lab Sign-in System">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="#" class="bg-white text-teal-500 px-4 py-2 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300">View Project</a>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Lab Sign-in System</h3>
+                <p class="text-gray-600 mb-4">A Django-based system for managing laboratory access and attendance.</p>
+                <div class="flex gap-2">
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Django</span>
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Python</span>
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 shadow-lg rounded-xl hover-grow group">
+                <div class="relative overflow-hidden rounded-lg mb-4">
+                    <img src="{% static 'image/product-1.jpg'%}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Student Performance Tracker">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <a href="#" class="bg-white text-teal-500 px-4 py-2 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300">View Project</a>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Student Performance Tracker</h3>
+                <p class="text-gray-600 mb-4">A Django-based system for tracking student performance.</p>
+                <div class="flex gap-2">
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Django</span>
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Python</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 shadow-lg rounded-xl hover-grow group">
+                <div class="relative overflow-hidden rounded-lg mb-4">
+                    <img src="{% static 'image/branding-1.jpg' %}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="E-commerce Website for Small Chops">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <a href="#" class="bg-white text-teal-500 px-4 py-2 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300">View Project</a>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">E-commerce Website for Small Chops</h3>
+                <p class="text-gray-600 mb-4">An e-commerce website for selling small chops.</p>
+                <div class="flex gap-2">
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Django</span>
+                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
