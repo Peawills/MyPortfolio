@@ -1,70 +1,406 @@
-<section id="services" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-16 text-gradient-custom">Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-8 shadow-lg rounded-xl bg-white hover-grow group">
-                <div class="text-teal-500 text-4xl mb-6">
-                    <i class="fas fa-paint-brush"></i>
+{% load static %}
+<!-- Services Section Styles -->
+<style>
+        .text-gradient-custom {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-grow {
+            transition: all 0.4s ease;
+        }
+
+        .hover-grow:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .service-icon {
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .pricing-badge {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .pricing-badge {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <section id="services" class="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div
+            class="absolute top-0 left-0 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 animate-fade-in-up">
+                <div class="inline-block mb-4">
+                    <span class="px-6 py-2 bg-teal-100 text-teal-600 rounded-full text-sm font-medium">
+                        <i class="fas fa-sparkles mr-2"></i>What I Offer
+                    </span>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Web Design</h3>
-                <p class="text-gray-600 mb-6">Creating beautiful, responsive, and user-friendly websites that engage your audience.</p>
-                <ul class="space-y-2 text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Responsive Design
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        UI/UX Optimization
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Modern Layouts
-                    </li>
-                </ul>
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 text-gradient-custom">My Services</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Comprehensive solutions to bring your digital vision to life
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto rounded-full mt-6"></div>
             </div>
-            <div class="p-8 shadow-lg rounded-xl bg-white hover-grow group">
-                <div class="text-teal-500 text-4xl mb-6">
-                    <i class="fas fa-code"></i>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+                <!-- Service 1: Web Design -->
+                <div class="service-card p-8 shadow-xl rounded-2xl bg-white hover-grow border border-gray-100 relative">
+                    <div
+                        class="service-icon w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-lg">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Web Design</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Creating beautiful, responsive, and user-friendly websites that engage your audience and deliver
+                        exceptional experiences.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Responsive Design</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>UI/UX Optimization</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Modern Layouts</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Brand Identity</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="pricing-badge inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold border border-blue-200">
+                        <i class="fas fa-tag mr-1"></i>Starting at $500
+                    </div>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">Development</h3>
-                <p class="text-gray-600 mb-6">Custom web applications tailored to your needs.</p>
-                <ul class="space-y-2 text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Django Development
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Python Programming
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Tailwind CSS
-                    </li>
-                </ul>
+
+                <!-- Service 2: Development -->
+                <div class="service-card p-8 shadow-xl rounded-2xl bg-white hover-grow border border-gray-100 relative">
+                    <div
+                        class="service-icon w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-lg">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Web Development</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Building robust, scalable web applications with cutting-edge technologies tailored to your
+                        specific business needs.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Django Development</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Python Programming</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>API Integration</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Database Design</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="pricing-badge inline-block px-4 py-2 bg-teal-50 text-teal-600 rounded-full text-sm font-semibold border border-teal-200">
+                        <i class="fas fa-tag mr-1"></i>Starting at $800
+                    </div>
+                </div>
+
+                <!-- Service 3: Tech Education -->
+                <div class="service-card p-8 shadow-xl rounded-2xl bg-white hover-grow border border-gray-100 relative">
+                    <div
+                        class="service-icon w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-lg">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Tech Education</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Expert tutoring and training in programming, helping students and professionals master web
+                        development skills.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Python Tutoring</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Django Training</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>1-on-1 Mentorship</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Course Development</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="pricing-badge inline-block px-4 py-2 bg-purple-50 text-purple-600 rounded-full text-sm font-semibold border border-purple-200">
+                        <i class="fas fa-tag mr-1"></i>Starting at $50/hr
+                    </div>
+                </div>
+
+                <!-- Service 4: SEO Optimization -->
+                <div class="service-card p-8 shadow-xl rounded-2xl bg-white hover-grow border border-gray-100 relative">
+                    <div
+                        class="service-icon w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-lg">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">SEO Optimization</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Boost your online visibility and drive organic traffic with data-driven SEO strategies and
+                        optimization.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Keyword Research</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>On-Page Optimization</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Technical SEO</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Analytics Tracking</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="pricing-badge inline-block px-4 py-2 bg-green-50 text-green-600 rounded-full text-sm font-semibold border border-green-200">
+                        <i class="fas fa-tag mr-1"></i>Starting at $400
+                    </div>
+                </div>
+
+                <!-- Service 5: AI Solutions -->
+                <div class="service-card p-8 shadow-xl rounded-2xl bg-white hover-grow border border-gray-100 relative">
+                    <div
+                        class="service-icon w-20 h-20 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-lg">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">AI Integration</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Leverage artificial intelligence to automate processes, gain insights, and create intelligent
+                        applications.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Chatbot Development</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>OpenAI Integration</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>ML Model Training</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Data Analysis</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="pricing-badge inline-block px-4 py-2 bg-indigo-50 text-indigo-600 rounded-full text-sm font-semibold border border-indigo-200">
+                        <i class="fas fa-tag mr-1"></i>Starting at $1000
+                    </div>
+                </div>
+
+                <!-- Service 6: Consulting -->
+                <div class="service-card p-8 shadow-xl rounded-2xl bg-white hover-grow border border-gray-100 relative">
+                    <div
+                        class="service-icon w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-lg">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Tech Consulting</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Strategic technology consulting to guide your digital transformation and optimize your tech
+                        stack.
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Tech Stack Review</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Architecture Planning</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Code Audits</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div
+                                class="w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-teal-600 text-xs"></i>
+                            </div>
+                            <span>Strategy Sessions</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="pricing-badge inline-block px-4 py-2 bg-orange-50 text-orange-600 rounded-full text-sm font-semibold border border-orange-200">
+                        <i class="fas fa-tag mr-1"></i>Starting at $100/hr
+                    </div>
+                </div>
             </div>
-            <div class="p-8 shadow-lg rounded-xl bg-white hover-grow group">
-                <div class="text-teal-500 text-4xl mb-6">
-                    <i class="fas fa-search"></i>
+
+            <!-- CTA Section -->
+            <div
+                class="max-w-4xl mx-auto text-center bg-gradient-to-r from-teal-500 to-cyan-500 rounded-3xl p-12 shadow-2xl">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h3>
+                <p class="text-white text-lg mb-8 opacity-90">
+                    Let's discuss how I can help bring your vision to life
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact"
+                        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-teal-600 rounded-full font-semibold hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1 shadow-xl">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Get a Free Quote</span>
+                    </a>
+                    <a href="#portfolio"
+                        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-teal-600 transition-all duration-300 transform hover:-translate-y-1">
+                        <i class="fas fa-eye"></i>
+                        <span>View My Work</span>
+                    </a>
                 </div>
-                <h3 class="text-2xl font-semibold mb-4">SEO Optimization</h3>
-                <p class="text-gray-600 mb-6">Helping your website rank higher in search results.</p>
-                <ul class="space-y-2 text-gray-600">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Keyword Research
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        On-Page Optimization
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check text-teal-500"></i>
-                        Link Building
-                    </li>
-                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+

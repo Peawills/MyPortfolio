@@ -1,92 +1,430 @@
-<!-- {% load static %} -->
-<!-- {% block title %}Home{% endblock title %} -->
+{% load static %}
+    <style>
+        .gradient-custom {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #2dd4bf 100%);
+        }
 
-<section id="hero" class="slider relative">
-    <div class="slides">
-        <div class="slide-content bg-gradient-custom relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="relative z-10 p-10 rounded max-w-4xl mx-auto">
-                <div class="animate-fade-in-up">
-                    <h2 class="text-7xl font-bold text-white mb-6 leading-tight">Peaceful Williams</h2>
-                    <p class="text-3xl text-white mb-8">I'm a <span class="font-semibold text-teal-300">Tech Tutor</span> | <span class="font-semibold text-teal-300">Django Developer</span> | <span class="font-semibold text-teal-300">Web Developer</span></p>
-                    <div class="flex gap-6 justify-center">
-                        <a href="#portfolio" class="group bg-white text-teal-500 px-8 py-4 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300 flex items-center gap-2">
-                            <span>View My Work</span>
-                            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform duration-300"></i>
-                        </a>
-                        <a href="#contact" class="group border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-teal-500 transition-all duration-300 flex items-center gap-2">
-                            <span>Contact Me</span>
-                            <i class="fas fa-envelope transform group-hover:translate-x-1 transition-transform duration-300"></i>
-                        </a>
+        .slide-content {
+            min-height: 100vh;
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide-content.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .animate-slide-up-delay-1 {
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .animate-slide-up-delay-2 {
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background-color: white;
+            transform: scale(1.5);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay-gradient {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+
+    <section id="hero" class="slider relative overflow-hidden">
+        <!-- Slide 1: Main Introduction -->
+        <div class="slide-content active items-center justify-center relative" style="background-image: url('{% static 'image/programmer.jpg' %}')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+            <div class="relative z-10 p-10 max-w-5xl mx-auto text-center">
+                <div class="animate-slide-up">
+                    <!-- Badge -->
+                    <div class="inline-block mb-6">
+                        <span class="px-6 py-2 glass-effect rounded-full text-white text-sm font-medium">
+                            <i class="fas fa-sparkles mr-2"></i>Welcome to My Portfolio
+                        </span>
+                    </div>
+
+                    <h2 class="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight text-shadow">
+                        Peaceful Williams
+                    </h2>
+                </div>
+
+                <div class="animate-slide-up-delay-1">
+                    <p class="text-2xl md:text-4xl text-white mb-4">
+                        I'm a <span class="font-bold text-teal-200">Tech Tutor</span> |
+                        <span class="font-bold text-teal-200">Django Developer</span> |
+                        <span class="font-bold text-teal-200">Web Developer</span>
+                    </p>
+                    <p class="text-lg text-white text-opacity-90 mb-10 max-w-2xl mx-auto">
+                        Transforming ideas into exceptional digital experiences
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up-delay-2">
+                    <a href="#portfolio"
+                        class="group bg-white text-teal-600 px-10 py-4 rounded-full font-semibold hover:bg-teal-50 transition-all duration-300 flex items-center justify-center gap-2 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1">
+                        <span>View My Work</span>
+                        <i
+                            class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                    <a href="#contact"
+                        class="group border-2 border-white text-white px-10 py-4 rounded-full font-semibold glass-effect hover:bg-white hover:text-teal-600 transition-all duration-300 flex items-center justify-center gap-2 transform hover:-translate-y-1">
+                        <span>Contact Me</span>
+                        <i
+                            class="fas fa-envelope transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 max-w-3xl mx-auto">
+                    <div
+                        class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl font-bold text-white mb-2">5+</div>
+                        <div class="text-sm text-white text-opacity-80">Years Experience</div>
+                    </div>
+                    <div
+                        class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl font-bold text-white mb-2">50+</div>
+                        <div class="text-sm text-white text-opacity-80">Projects Completed</div>
+                    </div>
+                    <div
+                        class="glass-effect rounded-2xl p-6 transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl font-bold text-white mb-2">100+</div>
+                        <div class="text-sm text-white text-opacity-80">Students Taught</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+                <div class="flex flex-col items-center text-white text-opacity-80">
+                    <span class="text-sm mb-2">Scroll</span>
+                    <i class="fas fa-chevron-down text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Innovative Solutions -->
+        <div class="slide-content items-center justify-center relative" style="background-image: url('{% static 'image/work-1.jpg' %}')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 text-center text-white p-8 max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="inline-block p-6 bg-white bg-opacity-10 rounded-full mb-6 backdrop-blur-sm">
+                        <i class="fas fa-lightbulb text-6xl text-teal-300"></i>
+                    </div>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-6 text-shadow animate-slide-up">Innovative Solutions</h3>
+                <p class="text-xl md:text-2xl mb-8 text-white text-opacity-90 animate-slide-up-delay-1">Creating
+                    cutting-edge web applications that drive business growth</p>
+                <div class="flex flex-wrap justify-center gap-4 animate-slide-up-delay-2">
+                    <span class="px-6 py-3 glass-effect rounded-full text-sm font-medium">React</span>
+                    <span class="px-6 py-3 glass-effect rounded-full text-sm font-medium">Django</span>
+                    <span class="px-6 py-3 glass-effect rounded-full text-sm font-medium">Node.js</span>
+                    <span class="px-6 py-3 glass-effect rounded-full text-sm font-medium">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Expert Development -->
+        <div class="slide-content items-center justify-center relative" style="background-image: url('{% static 'image/work-2.jpg' %}')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 text-center text-white p-8 max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="inline-block p-6 bg-white bg-opacity-10 rounded-full mb-6 backdrop-blur-sm">
+                        <i class="fas fa-code text-6xl text-purple-300"></i>
+                    </div>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-6 text-shadow animate-slide-up">Expert Development</h3>
+                <p class="text-xl md:text-2xl mb-8 text-white text-opacity-90 animate-slide-up-delay-1">Building
+                    scalable web solutions with modern technologies</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 animate-slide-up-delay-2">
+                    <div class="glass-effect rounded-lg p-4">
+                        <i class="fas fa-mobile-alt text-3xl mb-2"></i>
+                        <p class="text-sm">Responsive</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-4">
+                        <i class="fas fa-rocket text-3xl mb-2"></i>
+                        <p class="text-sm">Fast</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-4">
+                        <i class="fas fa-shield-alt text-3xl mb-2"></i>
+                        <p class="text-sm">Secure</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-4">
+                        <i class="fas fa-chart-line text-3xl mb-2"></i>
+                        <p class="text-sm">Scalable</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="slide-content relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            <img src="{% static 'image/divinetechygirl.jpg' %}" alt="Programming 1" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center text-white p-8">
-                    <h3 class="text-4xl font-bold mb-4">Innovative Solutions</h3>
-                    <p class="text-xl">Creating cutting-edge web applications</p>
+
+        <!-- Slide 4: Tech Education -->
+        <div class="slide-content items-center justify-center relative" style="background-image: url('{% static 'image/work-3.jpg' %}')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 text-center text-white p-8 max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="inline-block p-6 bg-white bg-opacity-10 rounded-full mb-6 backdrop-blur-sm">
+                        <i class="fas fa-graduation-cap text-6xl text-blue-300"></i>
+                    </div>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-6 text-shadow animate-slide-up">Tech Education</h3>
+                <p class="text-xl md:text-2xl mb-8 text-white text-opacity-90 animate-slide-up-delay-1">Empowering the
+                    next generation of developers through mentorship</p>
+                <div class="flex justify-center gap-8 mt-8 animate-slide-up-delay-2">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold mb-2">100+</div>
+                        <div class="text-sm text-white text-opacity-80">Students</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold mb-2">500+</div>
+                        <div class="text-sm text-white text-opacity-80">Hours</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold mb-2">15+</div>
+                        <div class="text-sm text-white text-opacity-80">Courses</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="slide-content relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            <img src="{% static 'image/contact-img.jpg' %}" alt="Programming 2" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center text-white p-8">
-                    <h3 class="text-4xl font-bold mb-4">Expert Development</h3>
-                    <p class="text-xl">Building scalable web solutions</p>
+
+        <!-- Slide 5: Modern Design -->
+        <div class="slide-content items-center justify-center relative" style="background-image: url('{% static 'image/work-4.jpg' %}')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 text-center text-white p-8 max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="inline-block p-6 bg-white bg-opacity-10 rounded-full mb-6 backdrop-blur-sm">
+                        <i class="fas fa-palette text-6xl text-green-300"></i>
+                    </div>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-6 text-shadow animate-slide-up">Modern Design</h3>
+                <p class="text-xl md:text-2xl mb-8 text-white text-opacity-90 animate-slide-up-delay-1">Creating
+                    beautiful and intuitive user experiences</p>
+                <div class="flex flex-wrap justify-center gap-6 mt-8 animate-slide-up-delay-2">
+                    <div class="glass-effect rounded-lg p-6 text-center min-w-[120px]">
+                        <i class="fas fa-pencil-ruler text-3xl mb-2"></i>
+                        <p class="text-sm">UI/UX</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6 text-center min-w-[120px]">
+                        <i class="fas fa-swatchbook text-3xl mb-2"></i>
+                        <p class="text-sm">Branding</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6 text-center min-w-[120px]">
+                        <i class="fas fa-magic text-3xl mb-2"></i>
+                        <p class="text-sm">Animation</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="slide-content relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            <img src="{% static 'image/programmer.jpg' %}" alt="Programming 3" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center text-white p-8">
-                    <h3 class="text-4xl font-bold mb-4">Tech Education</h3>
-                    <p class="text-xl">Empowering the next generation of developers</p>
+
+        <!-- Slide 6: Problem Solving -->
+        <div class="slide-content items-center justify-center relative" style="background-image: url('{% static 'image/work-5.jpg' %}')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div class="relative z-10 text-center text-white p-8 max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="inline-block p-6 bg-white bg-opacity-10 rounded-full mb-6 backdrop-blur-sm">
+                        <i class="fas fa-puzzle-piece text-6xl text-orange-300"></i>
+                    </div>
+                </div>
+                <h3 class="text-5xl md:text-6xl font-bold mb-6 text-shadow animate-slide-up">Problem Solving</h3>
+                <p class="text-xl md:text-2xl mb-8 text-white text-opacity-90 animate-slide-up-delay-1">Turning complex
+                    challenges into elegant solutions</p>
+                <div class="mt-8 animate-slide-up-delay-2">
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 px-10 py-4 bg-white text-orange-600 rounded-full font-semibold hover:bg-orange-50 transition-all duration-300 shadow-2xl transform hover:-translate-y-1">
+                        <span>Let's Work Together</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="slide-content relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            <img src="{% static 'image/thisisengineering.jpg' %}" alt="Programming 4" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center text-white p-8">
-                    <h3 class="text-4xl font-bold mb-4">Modern Design</h3>
-                    <p class="text-xl">Creating beautiful user experiences</p>
-                </div>
-            </div>
+
+        <!-- Navigation Dots -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
+            <button onclick="goToSlide(0)"
+                class="dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-300 active"
+                aria-label="Go to slide 1"></button>
+            <button onclick="goToSlide(1)"
+                class="dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-300"
+                aria-label="Go to slide 2"></button>
+            <button onclick="goToSlide(2)"
+                class="dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-300"
+                aria-label="Go to slide 3"></button>
+            <button onclick="goToSlide(3)"
+                class="dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-300"
+                aria-label="Go to slide 4"></button>
+            <button onclick="goToSlide(4)"
+                class="dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-300"
+                aria-label="Go to slide 5"></button>
+            <button onclick="goToSlide(5)"
+                class="dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-all duration-300"
+                aria-label="Go to slide 6"></button>
         </div>
-        <div class="slide-content relative overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-            <img src="{% static 'image/vladbagacian.jpg' %}" alt="Programming 5" class="w-full h-full object-cover">
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-center text-white p-8">
-                    <h3 class="text-4xl font-bold mb-4">Problem Solving</h3>
-                    <p class="text-xl">Turning ideas into reality</p>
-                </div>
-            </div>
+
+        <!-- Navigation Arrows -->
+        <div class="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 flex flex-col gap-4 z-20">
+            <button onclick="nextSlide()"
+                class="w-12 h-12 rounded-full glass-effect flex items-center justify-center text-white hover:bg-white hover:bg-opacity-30 transition-all duration-300 transform hover:scale-110"
+                aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button onclick="prevSlide()"
+                class="w-12 h-12 rounded-full glass-effect flex items-center justify-center text-white hover:bg-white hover:bg-opacity-30 transition-all duration-300 transform hover:scale-110"
+                aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
         </div>
-    </div>
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-        <button title="Go to slide 1" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
-        <button title="Go to slide 2" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
-        <button title="Go to slide 3" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
-        <button title="Go to slide 4" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
-        <button title="Go to slide 5" class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-300"></button>
-    </div>
-    <div class="absolute top-1/2 right-8 transform -translate-y-1/2 flex flex-col gap-4">
-        <button title="Next slide" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-white hover:bg-opacity-40 transition-all duration-300">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        <button title="Previous slide" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-white hover:bg-opacity-40 transition-all duration-300">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-    </div>
-</section>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-content');
+        const dots = document.querySelectorAll('.dot');
+        let autoSlideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            resetAutoSlide();
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.slider').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.slider').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }
+
+        // Start auto-slide
+        resetAutoSlide();
+
+        // Pause on hover
+        document.querySelector('.slider').addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        document.querySelector('.slider').addEventListener('mouseleave', () => {
+            resetAutoSlide();
+        });
+    </script>
 

@@ -1,51 +1,483 @@
-{% load static%}
-<section id="portfolio" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-16 text-gradient-custom">My Portfolio</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 shadow-lg rounded-xl hover-grow group">
-                <div class="relative overflow-hidden rounded-lg mb-4">
-                    <img src="{% static '/portfolio/' %}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Lab Sign-in System">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href="#" class="bg-white text-teal-500 px-4 py-2 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300">View Project</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        .text-gradient-custom {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-grow {
+            transition: all 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-overlay {
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+        }
+
+        .project-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .project-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .project-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <section id="portfolio" class="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-cyan-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 animate-fade-in-up">
+                <div class="inline-block mb-4">
+                    <span class="px-6 py-2 bg-teal-100 text-teal-600 rounded-full text-sm font-medium">
+                        <i class="fas fa-briefcase mr-2"></i>Recent Work
+                    </span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 text-gradient-custom">My Portfolio</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Explore my latest projects showcasing web development, AI integration, and educational platforms
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto rounded-full mt-6"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button
+                    class="filter-btn active px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-teal-500 hover:text-white">
+                    All Projects
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-teal-500 hover:text-white">
+                    Web Apps
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-teal-500 hover:text-white">
+                    E-commerce
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-teal-500 hover:text-white">
+                    Education
+                </button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Project 1: Lab Sign-in System -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden hover-grow border border-gray-100 shadow-lg">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-teal-400 to-cyan-500">
+                        <!-- Placeholder for image - replace with actual image -->
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-clipboard-check text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div
+                            class="project-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 hover:opacity-100 flex items-center justify-center">
+                            <div class="text-center space-y-4">
+                                <a href="#"
+                                    class="inline-block bg-white text-teal-600 px-6 py-3 rounded-full font-semibold hover:bg-teal-50 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Project
+                                </a>
+                                <a href="#"
+                                    class="inline-block bg-teal-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 ml-2">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Lab Sign-in System</h3>
+                            <span class="text-teal-500">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            A comprehensive Django-based system for managing laboratory access, attendance tracking, and
+                            resource allocation with real-time monitoring.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                <i class="fab fa-python mr-1"></i>Django
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                Python
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-indigo-50 to-indigo-100 text-indigo-700 rounded-full text-xs font-medium border border-indigo-200">
+                                PostgreSQL
+                            </span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                            <span><i class="far fa-calendar mr-1"></i>2024</span>
+                            <span><i class="far fa-eye mr-1"></i>Education</span>
+                        </div>
                     </div>
                 </div>
-                <h3 class="text-xl font-semibold mb-2">Lab Sign-in System</h3>
-                <p class="text-gray-600 mb-4">A Django-based system for managing laboratory access and attendance.</p>
-                <div class="flex gap-2">
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Django</span>
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Python</span>
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+
+                <!-- Project 2: Student Performance Tracker -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden hover-grow border border-gray-100 shadow-lg">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-purple-400 to-pink-500">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-chart-line text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div
+                            class="project-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 hover:opacity-100 flex items-center justify-center">
+                            <div class="text-center space-y-4">
+                                <a href="#"
+                                    class="inline-block bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Project
+                                </a>
+                                <a href="#"
+                                    class="inline-block bg-purple-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 ml-2">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Student Performance Tracker</h3>
+                            <span class="text-purple-500">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Advanced analytics platform for tracking and visualizing student academic performance with
+                            AI-powered insights and recommendations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                <i class="fab fa-python mr-1"></i>Django
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                Python
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-full text-xs font-medium border border-purple-200">
+                                Chart.js
+                            </span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                            <span><i class="far fa-calendar mr-1"></i>2024</span>
+                            <span><i class="far fa-eye mr-1"></i>Education</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: E-commerce Website -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden hover-grow border border-gray-100 shadow-lg">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-orange-400 to-red-500">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div
+                            class="project-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 hover:opacity-100 flex items-center justify-center">
+                            <div class="text-center space-y-4">
+                                <a href="#"
+                                    class="inline-block bg-white text-orange-600 px-6 py-3 rounded-full font-semibold hover:bg-orange-50 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Project
+                                </a>
+                                <a href="#"
+                                    class="inline-block bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 ml-2">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Small Chops E-commerce</h3>
+                            <span class="text-orange-500">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Full-featured e-commerce platform with payment integration, inventory management, and order
+                            tracking for a local food business.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                <i class="fab fa-python mr-1"></i>Django
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-cyan-50 to-cyan-100 text-cyan-700 rounded-full text-xs font-medium border border-cyan-200">
+                                Tailwind CSS
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-green-50 to-green-100 text-green-700 rounded-full text-xs font-medium border border-green-200">
+                                Stripe
+                            </span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                            <span><i class="far fa-calendar mr-1"></i>2024</span>
+                            <span><i class="far fa-eye mr-1"></i>E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Portfolio Website -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden hover-grow border border-gray-100 shadow-lg">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-green-400 to-emerald-500">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-globe text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div
+                            class="project-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 hover:opacity-100 flex items-center justify-center">
+                            <div class="text-center space-y-4">
+                                <a href="#"
+                                    class="inline-block bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-50 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Project
+                                </a>
+                                <a href="#"
+                                    class="inline-block bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 ml-2">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Personal Portfolio</h3>
+                            <span class="text-green-500">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Modern, responsive portfolio website showcasing projects, skills, and professional
+                            experience with smooth animations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                Django
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-cyan-50 to-cyan-100 text-cyan-700 rounded-full text-xs font-medium border border-cyan-200">
+                                Tailwind CSS
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-yellow-50 to-yellow-100 text-yellow-700 rounded-full text-xs font-medium border border-yellow-200">
+                                JavaScript
+                            </span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                            <span><i class="far fa-calendar mr-1"></i>2024</span>
+                            <span><i class="far fa-eye mr-1"></i>Web Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: AI Chatbot -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden hover-grow border border-gray-100 shadow-lg">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-blue-400 to-indigo-500">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-robot text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div
+                            class="project-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 hover:opacity-100 flex items-center justify-center">
+                            <div class="text-center space-y-4">
+                                <a href="#"
+                                    class="inline-block bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Project
+                                </a>
+                                <a href="#"
+                                    class="inline-block bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 ml-2">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">AI Study Assistant</h3>
+                            <span class="text-blue-500">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Intelligent chatbot leveraging OpenAI to help students with homework, explanations, and
+                            learning resources.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                Python
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-full text-xs font-medium border border-purple-200">
+                                OpenAI API
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                Django
+                            </span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                            <span><i class="far fa-calendar mr-1"></i>2024</span>
+                            <span><i class="far fa-eye mr-1"></i>AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Task Management App -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden hover-grow border border-gray-100 shadow-lg">
+                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-pink-400 to-rose-500">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-tasks text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div
+                            class="project-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 hover:opacity-100 flex items-center justify-center">
+                            <div class="text-center space-y-4">
+                                <a href="#"
+                                    class="inline-block bg-white text-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Project
+                                </a>
+                                <a href="#"
+                                    class="inline-block bg-pink-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 ml-2">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Task Management Pro</h3>
+                            <span class="text-pink-500">
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Collaborative task management platform with real-time updates, team collaboration, and
+                            productivity analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+                                Django
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-red-50 to-red-100 text-red-700 rounded-full text-xs font-medium border border-red-200">
+                                Redis
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-gradient-to-r from-yellow-50 to-yellow-100 text-yellow-700 rounded-full text-xs font-medium border border-yellow-200">
+                                WebSocket
+                            </span>
+                        </div>
+                        <div
+                            class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                            <span><i class="far fa-calendar mr-1"></i>2024</span>
+                            <span><i class="far fa-eye mr-1"></i>Productivity</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white p-6 shadow-lg rounded-xl hover-grow group">
-                <div class="relative overflow-hidden rounded-lg mb-4">
-                    <img src="{% static 'image/product-1.jpg'%}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="Student Performance Tracker">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="#" class="bg-white text-teal-500 px-4 py-2 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300">View Project</a>
-                    </div>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Student Performance Tracker</h3>
-                <p class="text-gray-600 mb-4">A Django-based system for tracking student performance.</p>
-                <div class="flex gap-2">
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Django</span>
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Python</span>
-                </div>
-            </div>
-            <div class="bg-white p-6 shadow-lg rounded-xl hover-grow group">
-                <div class="relative overflow-hidden rounded-lg mb-4">
-                    <img src="{% static 'image/branding-1.jpg' %}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" alt="E-commerce Website for Small Chops">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <a href="#" class="bg-white text-teal-500 px-4 py-2 rounded-full font-semibold hover:bg-teal-500 hover:text-white transition-all duration-300">View Project</a>
-                    </div>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">E-commerce Website for Small Chops</h3>
-                <p class="text-gray-600 mb-4">An e-commerce website for selling small chops.</p>
-                <div class="flex gap-2">
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Django</span>
-                    <span class="bg-teal-100 text-teal-500 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
-                </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-16">
+                <a href="#"
+                    class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Add your filter logic here
+            });
+        });
+    </script>
+
+</body>
+
+</html>
